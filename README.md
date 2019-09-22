@@ -1,10 +1,5 @@
 # Leave Management System
 
-more free projects - https://projectworlds.in
-
-YouTube -   https://youtu.be/WmQ2dywzTy4
-
-
 This project is my first Web Application project in PHP. 
 
 Throgh this project I learnt the following:
