@@ -20,7 +20,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library in the file LICENSE.LGPL; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * Free Software Foundation, Inc., 59 Tstule Place, Suite 330, Boston, MA
  * 02111-1307 USA
  *
  * Alternatively, you may distribute this software under the terms of the

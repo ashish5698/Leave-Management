@@ -19,7 +19,7 @@ function update_leaves($user,$dept)
 				}
 		}
 	
-	$sql = "SELECT * FROM employees WHERE UserName = '".$user."'";
+	$sql = "SELECT * FROM Students WHERE UserName = '".$user."'";
 	$result = $conn->query($sql);
 	if($result->num_rows > 0)
 		{
@@ -46,7 +46,7 @@ function update_leaves($user,$dept)
 						}
 					$sickleave = $row["SickLeave"] + $setsickleave;
 					$casualleave = $setcasualleave;
-					$sql2 = "UPDATE employees SET EarnLeave = '".$earnleave."',SickLeave = '".$sickleave."',CasualLeave = '".$casualleave."',UpdateStatus = '".date("Y-m-d")."' WHERE id = '".$row["id"]."'";
+					$sql2 = "UPDATE Students SET EarnLeave = '".$earnleave."',SickLeave = '".$sickleave."',CasualLeave = '".$casualleave."',UpdateStatus = '".date("Y-m-d")."' WHERE id = '".$row["id"]."'";
 					if($conn->query($sql2) == TRUE)
 						{
 						return true;
@@ -74,7 +74,7 @@ function update_leaves($user,$dept)
 						}
 					$sickleave = $row["SickLeave"] + $setsickleave;
 					$casualleave = $setcasualleave;
-					$sql2 = "UPDATE employees SET EarnLeave = '".$earnleave."',SickLeave = '".$sickleave."',CasualLeave = '".$casualleave."',UpdateStatus = '".date("Y-m-d")."' WHERE id = '".$row["id"]."'";
+					$sql2 = "UPDATE Students SET EarnLeave = '".$earnleave."',SickLeave = '".$sickleave."',CasualLeave = '".$casualleave."',UpdateStatus = '".date("Y-m-d")."' WHERE id = '".$row["id"]."'";
 					if($conn->query($sql2) == TRUE)
 						{
 						return true;

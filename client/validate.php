@@ -5,11 +5,11 @@ require 'update_leaves.php';
 $username = strip_tags(trim($_POST['uname']));
 $password = strip_tags(trim($_POST['pass']));
 
-$sql = "SELECT UserName, EmpPass,UpdateStatus,Dept FROM employees";
+$sql = "SELECT UserName, stuPass,UpdateStatus,Dept FROM Students";
 $result = $conn->query($sql);
 if($result->num_rows>0){
 while($row = $result->fetch_assoc()) {
-        if(($username == $row["UserName"]) && ($password == $row["EmpPass"]))
+        if(($username == $row["UserName"]) && ($password == $row["stuPass"]))
 			{
 			$_SESSION["user"] = $username;
 			$dept = $row["Dept"];
@@ -31,6 +31,6 @@ while($row = $result->fetch_assoc()) {
 }
 else
 	{
-		echo "Database Empty ! Please register some employees first";
+		echo "Database stuty ! Please register some Students first";
 	}	
 ?>

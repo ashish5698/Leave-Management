@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_student=@@CHARACTER_SET_student */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
@@ -52,15 +52,15 @@ INSERT INTO `admins` (`id`, `username`, `password`, `Dept`, `SetSickLeave`, `Set
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employees`
+-- Table structure for table `Students`
 --
 
-CREATE TABLE `employees` (
+CREATE TABLE `Students` (
   `id` int(11) NOT NULL,
   `UserName` varchar(50) NOT NULL,
-  `EmpPass` varchar(200) NOT NULL,
-  `EmpName` varchar(50) NOT NULL,
-  `EmpEmail` varchar(40) NOT NULL,
+  `stuPass` varchar(200) NOT NULL,
+  `stuName` varchar(50) NOT NULL,
+  `stuEmail` varchar(40) NOT NULL,
   `Dept` varchar(30) NOT NULL,
   `EarnLeave` int(5) UNSIGNED NOT NULL,
   `SickLeave` int(5) UNSIGNED NOT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE `employees` (
   `DateOfJoin` date NOT NULL,
   `Random` int(15) NOT NULL,
   `Designation` varchar(40) NOT NULL,
-  `EmpFee` varchar(40) NOT NULL,
-  `EmpType` varchar(40) NOT NULL,
+  `stuFee` varchar(40) NOT NULL,
+  `stuType` varchar(40) NOT NULL,
   `UpdateStatus` date NOT NULL,
   `DateOfBirth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -77,12 +77,12 @@ CREATE TABLE `employees` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emp_leaves`
+-- Table structure for table `stu_leaves`
 --
 
-CREATE TABLE `emp_leaves` (
+CREATE TABLE `stu_leaves` (
   `id` int(11) NOT NULL,
-  `EmpName` varchar(50) NOT NULL,
+  `stuName` varchar(50) NOT NULL,
   `LeaveType` varchar(60) NOT NULL,
   `RequestDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `LeaveDays` int(11) NOT NULL,
@@ -103,15 +103,15 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `employees`
+-- Indexes for table `Students`
 --
-ALTER TABLE `employees`
+ALTER TABLE `Students`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `emp_leaves`
+-- Indexes for table `stu_leaves`
 --
-ALTER TABLE `emp_leaves`
+ALTER TABLE `stu_leaves`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -124,15 +124,15 @@ ALTER TABLE `emp_leaves`
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `employees`
+-- AUTO_INCREMENT for table `Students`
 --
-ALTER TABLE `employees`
+ALTER TABLE `Students`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `emp_leaves`
+-- AUTO_INCREMENT for table `stu_leaves`
 --
-ALTER TABLE `emp_leaves`
+ALTER TABLE `stu_leaves`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_student=@OLD_CHARACTER_SET_student */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

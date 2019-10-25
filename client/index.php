@@ -11,7 +11,7 @@ if(isset($_SESSION['user']))
 	echo "<center>";
 	echo "<h1>Leave Management System</h1>";
 	include 'navi.php';
-	echo "<h2>Client Login</h2>";
+	echo "<h2>student Login</h2>";
 	if(isset($_GET['err']))
 		{
 			echo "<div class = 'error'><b><u>".htmlspecialchars($_GET['err'])."</u></b></div><br/>";

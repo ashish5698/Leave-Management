@@ -5,13 +5,13 @@ echo "<center>";
 echo "<div class = 'textview'>";
 include 'connect.php';
 echo "<h1>Leave Management System</h1>";
-include 'clientnavi.php';
+include 'studentnavi.php';
 session_start();
 
 if(isset($_SESSION['user']))
 	{
 	$user = $_SESSION['user'];
-	$sql = "SELECT * FROM employees WHERE UserName = '".$user."'";
+	$sql = "SELECT * FROM Students WHERE UserName = '".$user."'";
 	$result = $conn->query($sql);
 	if($result->num_rows > 0)
 		{
@@ -21,11 +21,11 @@ if(isset($_SESSION['user']))
 			echo "<h2>Request For A Leave for : ".$_POST['type']."</h2>";
 			echo "<form action = 'request_confirm.php' method = 'post'>";
 			echo "<table>";
-			echo "<input type = 'hidden' name = 'empname' value = '".$row["EmpName"]."'>";
+			echo "<input type = 'hidden' name = 'stuname' value = '".$row["stuName"]."'>";
 			echo "<input type = 'hidden' name = 'designation' value = '".$row["Designation"]."'>";
 			echo "<input type = 'hidden' name = 'dept' value = '".$row["Dept"]."'>";
-			echo "<input type = 'hidden' name = 'emptype' value = '".$row["EmpType"]."'>";
-			echo "<input type = 'hidden' name = 'empfee' value = '".$row["EmpFee"]."'>";
+			echo "<input type = 'hidden' name = 'stutype' value = '".$row["stuType"]."'>";
+			echo "<input type = 'hidden' name = 'stufee' value = '".$row["stuFee"]."'>";
 			
 			echo "<tr><th> * Starting Date : </th>
 					<td>

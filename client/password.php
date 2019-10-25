@@ -1,7 +1,7 @@
 <link rel = "stylesheet" type = "text/css" href = "style.css">
 <?php
 session_start();
-include 'clientnavi.php';
+include 'studentnavi.php';
 include 'connect.php';
 if(isset($_SESSION['user']))
 {
@@ -11,7 +11,7 @@ if(isset($_SESSION['user']))
 	$uname = $_SESSION['user'];
 	if($newpass == $cnfnewpass)
 		{
-		$sql = "SELECT id,UserName,EmpPass FROM employees";
+		$sql = "SELECT id,UserName,stuPass FROM Students";
 		if((strlen($newpass) >=10))
 			{	
 				if($newpass != $_SESSION['user'])
@@ -25,10 +25,10 @@ if(isset($_SESSION['user']))
 							if($uname == $row["UserName"])
 								{
 								$id = $row['id'];
-								if($oldpass == $row["EmpPass"])
+								if($oldpass == $row["stuPass"])
 									{
 									$newpass = hash_hmac('sha512', 'salt'.$newpass, md5($uname));
-									$sql2 = "UPDATE employees SET EmpPass='".$newpass."' WHERE id=".$id;
+									$sql2 = "UPDATE Students SET stuPass='".$newpass."' WHERE id=".$id;
 									if($conn->query($sql2) === TRUE)
 										{
 										header("location:home.php?msg=".urlencode('Password Succesfully Changed !'));

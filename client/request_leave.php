@@ -8,14 +8,14 @@ if(isset($_SESSION['user']))
 	echo "<center>";
 	echo "<div class = 'textview'>";
 	echo "<h1>Leave Management System</h1>";
-	include 'clientnavi.php';
+	include 'studentnavi.php';
 	echo "<h2>Please Select Your Leave Type</h2>";
 	if(isset($_GET['err']))
 				{
 				echo "<div class = 'error'><b><u>".htmlspecialchars($_GET['err'])."</u></b></div>";
 				}
 	echo "<form action = 'leaverequest.php' method = 'post'>";
-	$sql = "SELECT * FROM employees WHERE UserName = '".$_SESSION['user']."'";
+	$sql = "SELECT * FROM Students WHERE UserName = '".$_SESSION['user']."'";
 	$result = $conn->query($sql);
 	if($result->num_rows > 0)
 		{

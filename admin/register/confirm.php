@@ -18,13 +18,13 @@ if(isset($_SESSION['adminuser']))
 		}
 include 'adminnavi.php';
 $errmsg = $sql = "";
-$empname = trim($_POST['empname']);
+$stuname = trim($_POST['stuname']);
 $uname = trim($_POST['uname']);
 $mailid = trim($_POST['mailid']);
 $doj = trim($_POST['year-join'])."-".trim($_POST['month-join'])."-".trim($_POST['date-join']);
 $dob = trim($_POST['year-birth'])."-".trim($_POST['month-birth'])."-".trim($_POST['date-birth']);
 $dob2 = trim($_POST['date-birth'])."-".trim($_POST['month-birth'])."-".trim($_POST['year-birth']);
-$empname = strip_tags($empname);
+$stuname = strip_tags($stuname);
 $uname = strip_tags($uname);
 $mailid = strip_tags($mailid);
 $doj = strip_tags($doj);
@@ -32,30 +32,30 @@ $dob = strip_tags($dob);
 $dob2 = strip_tags($dob2);
 $pass = $dob2;
 $designation = strip_tags(trim($_POST['designation']));
-$emptype = strip_tags(trim($_POST['factype']));
-$empfee = strip_tags(trim($_POST['facfee']));
+$stutype = strip_tags(trim($_POST['factype']));
+$stufee = strip_tags(trim($_POST['facfee']));
 $earnleave = 0;
 $sickleave = 0;
 $casualleave = 0;
-if(empty($empname) || empty($uname) || empty($mailid) || empty($doj) || empty($dob))
+if(stuty($stuname) || stuty($uname) || stuty($mailid) || stuty($doj) || stuty($dob))
 	{
-		$errmsg.="One or more fields are empty...";
+		$errmsg.="One or more fields are stuty...";
 	}
 else{
-if(empty($doj))
+if(stuty($doj))
 	{
-		$errmsg.="Date Of Joining is empty ! ";
+		$errmsg.="Date Of Joining is stuty ! ";
 	}
-	if(empty($dob))
+	if(stuty($dob))
 	{
-		$errmsg.="Date Of Birth is empty ! ";
+		$errmsg.="Date Of Birth is stuty ! ";
 	}
 if(strtotime($doj) > time())
 	{
 		$errmsg.=" Date Of Joining cannot be a future date..."; 
 	}
 
-$sql = "SELECT UserName,EmpEmail FROM employees";
+$sql = "SELECT UserName,stuEmail FROM Students";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -64,13 +64,13 @@ if ($result->num_rows > 0) {
 				{
 					$errmsg.=" Username ".$uname." already taken...";
 				}
-			if($mailid == $row["EmpEmail"])
+			if($mailid == $row["stuEmail"])
 				{
 					$errmsg.=" Your Entered Email ID is already registered with another user...";
 				}
 		}
 	}
-if ((!filter_var($mailid, FILTER_VALIDATE_EMAIL)) || empty($mailid)) {
+if ((!filter_var($mailid, FILTER_VALIDATE_EMAIL)) || stuty($mailid)) {
   $errmsg.="Invalid email ID...";
 	}
 }
@@ -88,7 +88,7 @@ if($conn->query($sql2) == TRUE)
 					}
 			}
 	}
-if(!empty($errmsg))
+if(!stuty($errmsg))
 	{
 	header('location:index.php?err='.htmlspecialchars(urlencode($errmsg)));
 	}
@@ -96,20 +96,20 @@ else
 	{
 		echo "<div class = 'reg-form'>";
 		$pw = $uname;
-		$sql = "INSERT INTO employees (UserName,EmpPass,EmpName,Dept,EarnLeave,SickLeave,CasualLeave,EmpEmail,DateOfJoin,Designation,EmpType,EmpFee,DateOfBirth) VALUES "."('".$uname."','".$pw."','".$empname."','".$dept."','".$earnleave."','".$sickleave."','".$casualleave."','".$mailid."','".$doj."','".$designation."','".$emptype."','".$empfee."','".$dob."')";
+		$sql = "INSERT INTO Students (UserName,stuPass,stuName,Dept,EarnLeave,SickLeave,CasualLeave,stuEmail,DateOfJoin,Designation,stuType,stuFee,DateOfBirth) VALUES "."('".$uname."','".$pw."','".$stuname."','".$dept."','".$earnleave."','".$sickleave."','".$casualleave."','".$mailid."','".$doj."','".$designation."','".$stutype."','".$stufee."','".$dob."')";
 		if ($conn->query($sql) === TRUE) {
 			echo "<center>";
 			echo "<strong> Registration Successful !</strong><br/><br/>";
 			echo "<u>Registration Details :</u><br/>";
 			echo "Username : ".$uname."<br/>";
-			echo "Employee Name : ".$empname."<br/>";
+			echo "Student Name : ".$stuname."<br/>";
 			echo "Department : ".$dept."<br/>";
 			echo "Email id : ".$mailid."<br/>";
 			echo "Date Of Joining : ".$doj."<br/>";
 			echo "Designation : ".$designation."<br/>";
-			echo "Employment Type : ".$emptype." ; ".$empfee."<br/>";
+			echo "stuloyment Type : ".$stutype." ; ".$stufee."<br/>";
 			echo "Date Of Birth : ".$dob2."<br/>";
-			$msg = "Registration Successful! \n\nUsername : ".$uname."\nEmployee Name : ".$empname."\nPassword : ".$pass."\nDepartment : ".$dept."\nEmail ID : ".$mailid."\nDate Of Joining (yyyy/mm/dd): ".$doj."\n\n\nThanks For Registering with us\n\n\n\nRegards,\nwebadmin, Leave Management System";
+			$msg = "Registration Successful! \n\nUsername : ".$uname."\nStudent Name : ".$stuname."\nPassword : ".$pass."\nDepartment : ".$dept."\nEmail ID : ".$mailid."\nDate Of Joining (yyyy/mm/dd): ".$doj."\n\n\nThanks For Registering with us\n\n\n\nRegards,\nwebadmin, Leave Management System";
 			$to = $mailid;
 			$status = mailer($to,$msg);
 			if($status == true)

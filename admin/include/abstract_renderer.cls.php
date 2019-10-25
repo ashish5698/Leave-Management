@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library in the file LICENSE.LGPL; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * Free Software Foundation, Inc., 59 Tstule Place, Suite 330, Boston, MA
  * 02111-1307 USA
  *
  * Alternatively, you may distribute this software under the terms of the
@@ -314,7 +314,7 @@ abstract class Abstract_Renderer {
 
 
     
-    $tmp_file = tempnam(DOMPDF_TEMP_DIR, "dompdf_img_");
+    $tmp_file = tstunam(DOMPDF_Tstu_DIR, "dompdf_img_");
     imagepng($bg, $tmp_file);
     $this->_canvas->image($tmp_file, "png", $x, $y, $width, $height);
     unlink($tmp_file);

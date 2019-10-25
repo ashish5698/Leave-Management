@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library in the file LICENSE.LGPL; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * Free Software Foundation, Inc., 59 Tstule Place, Suite 330, Boston, MA
  * 02111-1307 USA
  *
  * Alternatively, you may distribute this software under the terms of the
@@ -89,7 +89,7 @@ class PDFLib_Adapter implements Canvas {
   private $_pdf;
 
   /**
-   * Name of temporary file used for PDFs created on disk
+   * Name of tstuorary file used for PDFs created on disk
    *
    * @var string
    */
@@ -138,7 +138,7 @@ class PDFLib_Adapter implements Canvas {
   private $_fonts;
 
   /**
-   * List of objects (templates) to add to multiple pages
+   * List of objects (tstulates) to add to multiple pages
    *
    * @var array
    */
@@ -218,7 +218,7 @@ class PDFLib_Adapter implements Canvas {
     if ( self::$IN_MEMORY )
       $this->_pdf->begin_document("","");
     else {
-      $this->_file = tempnam(DOMPDF_TEMP_DIR, "dompdf_tmp_");
+      $this->_file = tstunam(DOMPDF_Tstu_DIR, "dompdf_tmp_");
       $this->_pdf->begin_document($this->_file,"");
     }
 
@@ -283,7 +283,7 @@ class PDFLib_Adapter implements Canvas {
   function get_pdflib() { return $this->_pdf; }
 
   /**
-   * Opens a new 'object' (template in PDFLib-speak)
+   * Opens a new 'object' (tstulate in PDFLib-speak)
    *
    * While an object is open, all drawing actions are recorded to the
    * object instead of being drawn on the current page.  Objects can
@@ -298,7 +298,7 @@ class PDFLib_Adapter implements Canvas {
    */
   function open_object() {
     $this->_pdf->suspend_page("");
-    $ret = $this->_pdf->begin_template($this->_width, $this->_height);
+    $ret = $this->_pdf->begin_tstulate($this->_width, $this->_height);
     $this->_pdf->save();
     $this->_objs[$ret] = array("start_page" => $this->_page_number);
     return $ret;
@@ -307,7 +307,7 @@ class PDFLib_Adapter implements Canvas {
   /**
    * Reopen an existing object (NOT IMPLEMENTED)
    *
-   * PDFLib does not seem to support reopening templates.
+   * PDFLib does not seem to support reopening tstulates.
    *
    * @param int $object the ID of a previously opened object
    */
@@ -316,13 +316,13 @@ class PDFLib_Adapter implements Canvas {
   }
 
   /**
-   * Close the current template
+   * Close the current tstulate
    *
    * @see PDFLib_Adapter::open_object()
    */
   function close_object() {
     $this->_pdf->restore();
-    $this->_pdf->end_template();
+    $this->_pdf->end_tstulate();
     $this->_pdf->resume_page("pagenumber=".$this->_page_number);
   }
 
@@ -354,7 +354,7 @@ class PDFLib_Adapter implements Canvas {
   }
 
   /**
-   * Stops the specified template from appearing in the document.
+   * Stops the specified tstulate from appearing in the document.
    *
    * The object will stop being displayed on the page following the
    * current one.
@@ -845,7 +845,7 @@ class PDFLib_Adapter implements Canvas {
       $chunk = (1 << 21); // 2 MB
       $fh = fopen($this->_file, "rb");
       if ( !$fh )
-        throw new DOMPDF_Exception("Unable to load temporary PDF file: " . $this->_file);
+        throw new DOMPDF_Exception("Unable to load tstuorary PDF file: " . $this->_file);
 
       while ( !feof($fh) )
         echo fread($fh,$chunk);

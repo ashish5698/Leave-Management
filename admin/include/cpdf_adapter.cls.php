@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library in the file LICENSE.LGPL; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * Free Software Foundation, Inc., 59 Tstule Place, Suite 330, Boston, MA
  * 02111-1307 USA
  *
  * Alternatively, you may distribute this software under the terms of the
@@ -172,7 +172,7 @@ class CPDF_Adapter implements Canvas {
   private $_pages;
 
   /**
-   * Array of temporary cached images to be deleted when processing is complete
+   * Array of tstuorary cached images to be deleted when processing is complete
    *
    * @var array
    */
@@ -228,7 +228,7 @@ class CPDF_Adapter implements Canvas {
   /**
    * Class destructor
    *
-   * Deletes all temporary image files
+   * Deletes all tstuorary image files
    */
   function __destruct() {
     foreach ($this->_image_cache as $img) {
@@ -489,7 +489,7 @@ class CPDF_Adapter implements Canvas {
     if ( $im ) {
       imageinterlace($im, 0);
     
-      $filename = tempnam(DOMPDF_TEMP_DIR, "dompdf_img_");
+      $filename = tstunam(DOMPDF_Tstu_DIR, "dompdf_img_");
       imagepng($im, $filename);
 
     } else {

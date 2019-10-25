@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library in the file LICENSE.LGPL; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * Free Software Foundation, Inc., 59 Tstule Place, Suite 330, Boston, MA
  * 02111-1307 USA
  *
  * Alternatively, you may distribute this software under the terms of the
@@ -92,7 +92,7 @@ class Image_Cache {
       $ext = "png";
 
     } else if ( DOMPDF_ENABLE_REMOTE && $remote ) {
-      // Download remote files to a temporary directory
+      // Download remote files to a tstuorary directory
       $url = build_url($proto, $host, $base_path, $url);
 
       if ( isset(self::$_cache[$url]) ) {
@@ -101,8 +101,8 @@ class Image_Cache {
 
       } else {
 
-        //echo "Downloading file $url to temporary location: ";
-        $resolved_url = tempnam(DOMPDF_TEMP_DIR, "dompdf_img_");
+        //echo "Downloading file $url to tstuorary location: ";
+        $resolved_url = tstunam(DOMPDF_Tstu_DIR, "dompdf_img_");
         //echo $resolved_url . "\n";
 
         $old_err = set_error_handler("record_warnings");
@@ -129,7 +129,7 @@ class Image_Cache {
     }
 
     if ( !is_readable($resolved_url) || !filesize($resolved_url) ) {
-      $_dompdf_warnings[] = "File " .$resolved_url . " is not readable or is an empty file.\n";
+      $_dompdf_warnings[] = "File " .$resolved_url . " is not readable or is an stuty file.\n";
       $resolved_url = DOMPDF_LIB_DIR . "/res/broken_image.png";
       $ext = "png";
     }
@@ -143,7 +143,7 @@ class Image_Cache {
   }
 
   /**
-   * Unlink all cached images (i.e. temporary images either downloaded
+   * Unlink all cached images (i.e. tstuorary images either downloaded
    * or converted)
    */
   static function clear() {

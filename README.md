@@ -13,17 +13,17 @@ Throgh this project I learnt the following:
 In this project, the members are creating a leave management system. The project has
 the following components:
 
-  1. **CLIENT CONSOLE**
+  1. **student CONSOLE**
   2. **ADMIN MANAGEMENT CONSOLE**
-  3. **CLIENT REGISTRATION COMPONENT**
+  3. **student REGISTRATION COMPONENT**
   
-Before accessing the **CLIENT CONSOLE**, the client has to register himself/herself using
-the **CLIENT REGISTRATION COMPONENT**. The registration component consists of a
+Before accessing the **student CONSOLE**, the student has to register himself/herself using
+the **student REGISTRATION COMPONENT**. The registration component consists of a
 simple HTML form and the confirmation page for the same. Also, the registration details
-of the same are mailed to the client’s registered email address. The mail feature is
+of the same are mailed to the student’s registered email address. The mail feature is
 present in all the three components and is used as required.
 
-The **CLIENT CONSOLE** consists of the following features:
+The **student CONSOLE** consists of the following features:
 
   1. Requesting for a leave
   2. Password recovery option (through email)
@@ -35,10 +35,10 @@ The **CLIENT CONSOLE** consists of the following features:
   
 The **ADMIN MANAGEMENT** CONSOLE consists of the following features:
 
-  1. Removal of an employee (if he/she has quit the company)
-  2. Power of granting/rejecting the leaves requested by the client with/without
-  specifying the reason. Also, searching and deleting the employee as per his/her
+  1. Removal of an Student (if he/she has quit the company)
+  2. Power of granting/rejecting the leaves requested by the student with/without
+  specifying the reason. Also, searching and deleting the Student as per his/her
   department (if the application is used in a college/university) associated with
-  3. Mailing the leave grant/reject status along with the reason to the client’s
+  3. Mailing the leave grant/reject status along with the reason to the student’s
   registered email address.
-  4. Seeing the type of leaves sanctioned by him/her to the client
+  4. Seeing the type of leaves sanctioned by him/her to the student

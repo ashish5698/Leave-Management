@@ -8,17 +8,17 @@ if(isset($_SESSION['user']))
 	echo "<div class = 'textview'>";
 	include 'connect.php';
 	echo "<h1>Leave Management System</h1>";
-	include 'clientnavi.php';
+	include 'studentnavi.php';
 	echo "<center>";
 	echo "<h2>My All Leaves</h2>";
-	$sql = "SELECT id,UserName,EmpName FROM employees WHERE UserName = '".$_SESSION['user']."'";
+	$sql = "SELECT id,UserName,stuName FROM Students WHERE UserName = '".$_SESSION['user']."'";
 	$result = $conn->query($sql);
 	if($result->num_rows > 0)
 		{
 		while($row = $result->fetch_assoc())
 			{
-			$name = $row["EmpName"];
-			$sql2 = "SELECT * FROM emp_leaves WHERE EmpName = '".$name."'";
+			$name = $row["stuName"];
+			$sql2 = "SELECT * FROM stu_leaves WHERE stuName = '".$name."'";
 			$result2 = $conn->query($sql2);
 			if($result2->num_rows > 0)
 				{
@@ -33,7 +33,7 @@ if(isset($_SESSION['user']))
 				echo "<th>More Data</th></tr>";
 				while($row2 = $result2->fetch_assoc())
 					{
-					echo "<tr><td>".$row2["EmpName"]."</td>";
+					echo "<tr><td>".$row2["stuName"]."</td>";
 					echo "<td>".$row2["LeaveType"]."</td>";
 					echo "<td>".$row2["RequestDate"]."</td>";
 					echo "<td>".$row2["LeaveDays"]."</td>";

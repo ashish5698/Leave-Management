@@ -10,7 +10,7 @@ session_start();
 <div class = "textview">
 	<?php
 	echo "<h1>Leave Management System</h1>";
-	include 'clientnavi.php';
+	include 'studentnavi.php';
 	if(isset($_SESSION['user']))
 	{
 		echo "<h2>Change Password</h2>";

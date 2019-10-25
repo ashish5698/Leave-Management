@@ -94,8 +94,8 @@ li.dropdown {
   <li class="dropdown">
     <a href="#" class="dropbtn">Admin Tools</a>
     <div class="dropdown-content">
-	  <a href = "register">Register A New Employee</a>
-	  <a href="searchemp.php">Remove An Employee</a>
+	  <a href = "register">Register A New Student</a>
+	  <a href="searchstu.php">Remove An Student</a>
       <a href = "view_leaves.php">Accept/Reject Leave</a>
 	  <a href = "set_leaves.php">Set Default Leave</a>
 	  <a href = "extract_leaves.php">Extract Leaves</a>

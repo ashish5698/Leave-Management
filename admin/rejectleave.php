@@ -15,10 +15,10 @@ include 'adminnavi.php';
 include 'connect.php';
 include 'mailer.php';
 
-if(filter_var($_GET['id'],FILTER_VALIDATE_INT) && filter_var($_GET['empid'],FILTER_VALIDATE_INT))
+if(filter_var($_GET['id'],FILTER_VALIDATE_INT) && filter_var($_GET['stuid'],FILTER_VALIDATE_INT))
 	{
 		$id =$_GET['id'];
-		$empid =$_GET['empid'];
+		$stuid =$_GET['stuid'];
 	}
 else
 	{
@@ -27,27 +27,27 @@ else
 if(isset($_SESSION['adminuser']))
 	{
 	
-	$sql = "SELECT * FROM emp_leaves WHERE id='".$id."'";
+	$sql = "SELECT * FROM stu_leaves WHERE id='".$id."'";
 	$result = $conn->query($sql);
 	if($result->num_rows > 0)
 		{
 		while($row = $result->fetch_assoc())
 			{
-				$sql2 = "SELECT id,EmpEmail FROM employees WHERE id = '".$empid."'";
+				$sql2 = "SELECT id,stuEmail FROM Students WHERE id = '".$stuid."'";
 				$result2 = $conn->query($sql2);
 				if($result2->num_rows > 0)
 					{
 						while($row2 = $result2->fetch_assoc())
 							{
-							$email = $row2['EmpEmail'];
-							$sql3 = "UPDATE emp_leaves SET Status = 'Rejected' WHERE id = '".$id."'";
+							$email = $row2['stuEmail'];
+							$sql3 = "UPDATE stu_leaves SET Status = 'Rejected' WHERE id = '".$id."'";
 							if($conn->query($sql3) === TRUE)
 									{
-									$msg = "Your Leave Has Been Rejected ! \nEmployee Name : ".$row['EmpName']."\nLeave Type : ".$row['LeaveType']."\nNo. Of Leave Days : ".$row['LeaveDays']."\nStarting Date : ".$row['StartDate']."\nEnd date : ".$row['EndDate']."\n\n\nThanks,\nwebadmin, Leave Management System";
+									$msg = "Your Leave Has Been Rejected ! \nStudent Name : ".$row['stuName']."\nLeave Type : ".$row['LeaveType']."\nNo. Of Leave Days : ".$row['LeaveDays']."\nStarting Date : ".$row['StartDate']."\nEnd date : ".$row['EndDate']."\n\n\nThanks,\nwebadmin, Leave Management System";
 									$status = mailer($email,$msg);
 									if($status === TRUE)
 										{
-										echo "The Leave Request Status Mail For ".$row['EmpName']." Has been sent to his/her registered email address !<br/>";
+										echo "The Leave Request Status Mail For ".$row['stuName']." Has been sent to his/her registered email address !<br/>";
 										}
 									}	
 							}

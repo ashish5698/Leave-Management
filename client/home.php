@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION['user']))
 	{  echo "<div class = 'textview'>";
 	   echo "<h1>Leave Management System</h1>";
-	   include 'clientnavi.php';
+	   include 'studentnavi.php';
 	   include 'connect.php';
        echo "<h2>Welcome, " . $_SESSION["user"] ."</h2>";
 	   if(isset($_GET['msg']))
@@ -13,15 +13,15 @@ if(isset($_SESSION['user']))
 		}
 	   echo "<table>";
 		$user = $_SESSION['user'];
-		$sql="SELECT * FROM employees WHERE  UserName = '".$user."'";
+		$sql="SELECT * FROM Students WHERE  UserName = '".$user."'";
 		$result = $conn->query($sql);
 		echo "<table>";
 			if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {
 						echo "<tr><th>Profile Picture : </th><td><img src ='pro-pic/".$user.".jpg' height = 200 width = 200><a href = 'change_pp.php'>Change</a>&nbsp;&nbsp;&nbsp;<a href = 'delete_pp.php'>Delete</a></td></tr>";
 						echo "<tr><th>User Name : </th><td>".$row["UserName"]."</tr>";
-						echo "<tr><th>Email ID : </th><td>".$row["EmpEmail"]."</td></tr>";
-						echo "<tr><th>Employee Name : </th><td>".$row["EmpName"]."</td></tr>";
+						echo "<tr><th>Email ID : </th><td>".$row["stuEmail"]."</td></tr>";
+						echo "<tr><th>Student Name : </th><td>".$row["stuName"]."</td></tr>";
 						echo "<tr><th>Department : </th><td>".$row["Dept"]."</td></tr>";
 						echo "<tr><th>Earn Leave : </th><td>".$row["EarnLeave"]."</td></tr>";
 						echo "<tr><th>Sick Leave : </th><td>".$row["SickLeave"]."</td></tr>";

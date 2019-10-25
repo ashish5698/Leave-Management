@@ -9,7 +9,7 @@
 include 'connect.php';
 $key = trim($_POST['key']);
 $key = strip_tags($key);
-$sql = "SELECT Random FROM employees";
+$sql = "SELECT Random FROM Students";
 $result = $conn->query($sql);
 echo "<center>";
 echo "<table>";

@@ -3,7 +3,7 @@ require_once "Mail.php";
 function mailer($recipient,$msg){
 $from = '<your_user_name@gmail.com>';
 $to = '<'.$recipient.'>';
-$subject = 'Leave Request Status For Employee Registered with '.$recipient;
+$subject = 'Leave Request Status For Student Registered with '.$recipient;
 $body = $msg;
 $status = false; // initially set to false
 $headers = array(

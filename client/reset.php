@@ -6,7 +6,7 @@ $key = strip_tags($key);
 $newpass = strip_tags($newpass);
 if(strip_tags(trim($_POST['cnfnewpass'])) === $newpass)
 {
-	$sql = "SELECT id,UserName,Random FROM employees";
+	$sql = "SELECT id,UserName,Random FROM Students";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -16,11 +16,11 @@ if(strip_tags(trim($_POST['cnfnewpass'])) === $newpass)
 				$uname = $row["UserName"];
 				$id = $row["id"];
 				$newpw = hash_hmac('sha512', 'salt'.$newpass, md5($uname));
-				$sql2 = "UPDATE employees SET EmpPass='".$newpw."' WHERE id=".$id;
+				$sql2 = "UPDATE Students SET stuPass='".$newpw."' WHERE id=".$id;
 
 				if ($conn->query($sql2) === TRUE)
 					{
-					$sql3 = "UPDATE employees SET Random='' WHERE id=".$id;
+					$sql3 = "UPDATE Students SET Random='' WHERE id=".$id;
 					if($conn->query($sql3) === TRUE)
 						{
 							header('location:index.php?err='.urlencode('Password Changed Succesfully ! '));

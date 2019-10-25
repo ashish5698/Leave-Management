@@ -13,7 +13,7 @@ session_start();
 include 'connect.php';
 echo "<h1>Leave Management System</h1>";
 include 'adminnavi.php';
-echo "<h2>View Employees' Leaves</h2>";
+echo "<h2>View Students' Leaves</h2>";
 $count = 0;
 if(isset($_SESSION['adminuser']))
 	{
@@ -26,13 +26,13 @@ if(isset($_SESSION['adminuser']))
 			if($_SESSION['adminuser'] == $row['username'])
 				{
 				
-				$sql2 = "SELECT e.Id,e.Dept,e.EmpName,el.EmpName,el.LeaveType,el.RequestDate,el.LeaveDays,el.StartDate,el.EndDate,el.id,el.Dept FROM employees e, emp_leaves el WHERE e.Dept = el.Dept AND e.Dept = '".$row['Dept']."' AND el.Status = 'Requested' AND e.EmpName = el.EmpName";
+				$sql2 = "SELECT e.Id,e.Dept,e.stuName,el.stuName,el.LeaveType,el.RequestDate,el.LeaveDays,el.StartDate,el.EndDate,el.id,el.Dept FROM Students e, stu_leaves el WHERE e.Dept = el.Dept AND e.Dept = '".$row['Dept']."' AND el.Status = 'Requested' AND e.stuName = el.stuName";
 				$result2 = $conn->query($sql2);
 				if($result2->num_rows > 0)
 					{
 						echo "<table>";
 						echo "<tr>";
-						echo "<th>Employee Name</th>";
+						echo "<th>Student Name</th>";
 						echo "<th>Leave Type</th>";
 						echo "<th>Request Date</th>";
 						echo "<th>Leave Days</th>";
@@ -44,7 +44,7 @@ if(isset($_SESSION['adminuser']))
 							{
 							echo "<tr>";
 							echo "<td>";
-							echo $row2['EmpName'];
+							echo $row2['stuName'];
 							echo "</td>";
 							echo "<td>";
 							echo $row2['LeaveType'];
@@ -61,7 +61,7 @@ if(isset($_SESSION['adminuser']))
 							echo "<td>";
 							echo $row2['EndDate'];
 							echo "</td>";
-							echo "<td><a href = 'acceptleave.php?id=".$row2['id']."&empid=".$row2["Id"]."'>Accept</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href = 'rejectleave.php?id=".$row2['id']."&empid=".$row2["Id"]."'>Reject</a></td>";
+							echo "<td><a href = 'acceptleave.php?id=".$row2['id']."&stuid=".$row2["Id"]."'>Accept</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href = 'rejectleave.php?id=".$row2['id']."&stuid=".$row2["Id"]."'>Reject</a></td>";
 							echo "</tr>";
 							$count++;
 							}

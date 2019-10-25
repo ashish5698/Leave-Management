@@ -19,22 +19,22 @@ if(isset($_SESSION['adminuser']))
 			header('location:home.php');
 		}
 	$user = filter_var($_GET['user'],FILTER_SANITIZE_STRING);
-	$file = "../client/pro-pic/".$user.".jpg";
+	$file = "../student/pro-pic/".$user.".jpg";
 	if(file_exists($file))
 		{
 		unlink($file);
 		}
 	else
 		{}
-	$sql = "DELETE FROM employees WHERE id='".$id."'";
+	$sql = "DELETE FROM Students WHERE id='".$id."'";
 	echo "<center>";
 	if ($conn->query($sql) === TRUE)
 		{
-		header('location:home.php?msg='.urlencode('Employee Successfully Removed !'));
+		header('location:home.php?msg='.urlencode('Student Successfully Removed !'));
 		}
 	else
 		{
-		header('location:home.php?msg='.urlencode('Error Removing Employee !'));
+		header('location:home.php?msg='.urlencode('Error Removing Student !'));
 		}
 	$conn->close();
 	}

@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library in the file LICENSE.LGPL; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * Free Software Foundation, Inc., 59 Tstule Place, Suite 330, Boston, MA
  * 02111-1307 USA
  *
  * Alternatively, you may distribute this software under the terms of the
@@ -65,12 +65,12 @@ define("DOMPDF_LIB_DIR", DOMPDF_DIR . "/lib");
 define("DOMPDF_FONT_DIR", DOMPDF_DIR . "/lib/fonts/");
 
 /**
- * The location of the system's temporary directory.
+ * The location of the system's tstuorary directory.
  *
  * This directory must be writeable by the webserver process.
  * It is used to download remote images.
  */
-define("DOMPDF_TEMP_DIR", "/tmp");
+define("DOMPDF_Tstu_DIR", "/tmp");
 
 /**
  * ==== IMPORTANT ====

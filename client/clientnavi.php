@@ -90,7 +90,7 @@ li.dropdown {
 <body>
 
 <ul>
-  <li><a href="index.php">Client Home</a></li>
+  <li><a href="index.php">student Home</a></li>
   <li><a href="request_leave.php">Request Leave</a></li>
   <li class="dropdown">
     <a href="#" class="dropbtn">Me</a>

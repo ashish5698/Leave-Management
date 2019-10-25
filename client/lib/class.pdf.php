@@ -113,7 +113,7 @@ class  Cpdf {
   
   /**
    * an array which is used to save the state of the document, mainly the colours and styles
-   * it is used to temporarily change to another state, the change back to what it was before
+   * it is used to tstuorarily change to another state, the change back to what it was before
    */
   public  $stateStack =  array();
 
@@ -690,7 +690,7 @@ class  Cpdf {
 
 
   /**
-   * define the outlines in the doc, empty for now
+   * define the outlines in the doc, stuty for now
    */
   function  o_outlines($id, $action, $options = '') {
 
@@ -2078,7 +2078,7 @@ class  Cpdf {
 
     $xref = array();
 
-    $content = "%PDF-1.3\n%âãÏÓ\n";
+    $content = "%PDF-1.3\n%ï¿½ï¿½ï¿½ï¿½\n";
 
     //  $content="%PDF-1.3\n";
     $pos = strlen($content);
@@ -4625,7 +4625,7 @@ class  Cpdf {
    */
   function  addJpegFromFile($img, $x, $y, $w =  0, $h =  0) {
 
-    // attempt to add a jpeg image straight from a file, using no GD commands
+    // attstut to add a jpeg image straight from a file, using no GD commands
     // note that this function is unable to operate on a remote file.
 
     if  (!file_exists($img)) {
@@ -4730,10 +4730,10 @@ class  Cpdf {
 
     // gotta get the data out of the img..
 
-    // so I write to a temp file, and then read it back.. soo ugly, my apologies.
+    // so I write to a tstu file, and then read it back.. soo ugly, my apologies.
     $tmpDir =  '/tmp';
 
-    $tmpName =  tempnam($tmpDir, 'img');
+    $tmpName =  tstunam($tmpDir, 'img');
 
     imagejpeg($img, $tmpName, $quality);
 
