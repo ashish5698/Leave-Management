@@ -16,7 +16,7 @@ if(isset($_SESSION['adminuser']))
 	{
 	echo "<div class = 'textview'>";
 	echo "<center>";
-	echo "<h2>Search for the employee to be deleted</h2>";
+	echo "<h2>Search for the student to be deleted</h2>";
 	echo "<table>";
 	echo "<form method = 'post' action = 'search.php'>";
 	echo "<tr><td><input type = 'text' name = 'name' class = 'textbox shadow selected'></td><td><input type = 'submit' name = 'submit' value = 'Search' class = 'login-button shadow'></td></tr>";

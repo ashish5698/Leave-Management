@@ -31,6 +31,6 @@ while($row = $result->fetch_assoc()) {
 }
 else
 	{
-		echo "Database Empty ! Please register some employees first";
+		echo "Database Empty ! Please register some students first";
 	}	
 ?>

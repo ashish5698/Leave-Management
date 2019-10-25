@@ -13,7 +13,7 @@ session_start();
 include 'connect.php';
 echo "<h1>Leave Management System</h1>";
 include 'adminnavi.php';
-echo "<h2>View Employees' Leaves</h2>";
+echo "<h2>View Student's Leaves</h2>";
 $count = 0;
 if(isset($_SESSION['adminuser']))
 	{
@@ -32,7 +32,7 @@ if(isset($_SESSION['adminuser']))
 					{
 						echo "<table>";
 						echo "<tr>";
-						echo "<th>Employee Name</th>";
+						echo "<th>Student Name</th>";
 						echo "<th>Leave Type</th>";
 						echo "<th>Request Date</th>";
 						echo "<th>Leave Days</th>";
