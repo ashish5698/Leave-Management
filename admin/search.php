@@ -24,8 +24,8 @@ if(isset($_SESSION['adminuser']))
    $sql="SELECT UserName, EmpName, EmpEmail, Dept,EarnLeave,SickLeave,CasualLeave, id FROM employees WHERE  EmpName LIKE '%" . $name . "%' OR UserName LIKE '%" . $name  ."%'";
    $result = $conn->query($sql);
 	echo "<table>";
-	echo "<h2>Employee Search Results</h2>";
-	echo "<tr><th>Username</th><th>Employee Name</th><th>Employee email</th><th>Department</th><th>Earn Leaves</th><th>Sick Leaves</th><th>Casual Leaves</th></tr>";
+	echo "<h2>Student Search Results</h2>";
+	echo "<tr><th>Username</th><th>Student Name</th><th>Student email</th><th>Department</th><th>Earn Leaves</th><th>Sick Leaves</th><th>Casual Leaves</th></tr>";
 	if ($result->num_rows > 0) {
 		$sql2 = "SELECT Dept FROM admins WHERE username = '".$_SESSION['adminuser']."'";
 		$result2 = $conn->query($sql2);
