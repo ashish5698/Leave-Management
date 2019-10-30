@@ -17,16 +17,8 @@ if(isset($_SESSION['adminuser']))
 	echo "<form action = 'setleaves.php' method = 'post'>
 			<table>
 				<tr>
-				<td>Sick Leave : </td>
+				<td>Set Leaves : </td>
 				<td><input type = 'number' min = '0' name = 'setsickleave' class = 'textbox shadow selected'></td>
-				</tr>
-				<tr>
-				<td>Earn Leave : </td>
-				<td><input type = 'number' min = '0' name = 'setearnleave' class = 'textbox shadow selected'></td>
-				</tr>
-				<tr>
-				<td>Casual Leave : </td>
-				<td><input type = 'number' min = '0' name = 'setcasualleave' class = 'textbox shadow selected'></td>
 				</tr>
 				<tr>
 				<td><input type = 'submit' value = 'Set' class = 'login-button shadow'></td>

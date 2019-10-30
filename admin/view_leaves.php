@@ -26,7 +26,7 @@ if(isset($_SESSION['adminuser']))
 			if($_SESSION['adminuser'] == $row['username'])
 				{
 				
-				$sql2 = "SELECT e.Id,e.Dept,e.EmpName,el.EmpName,el.LeaveType,el.RequestDate,el.LeaveDays,el.StartDate,el.EndDate,el.id,el.Dept FROM employees e, emp_leaves el WHERE e.Dept = el.Dept AND e.Dept = '".$row['Dept']."' AND el.Status = 'Requested' AND e.EmpName = el.EmpName";
+				$sql2 = "SELECT e.Id,e.Dept,e.StuName,el.StuName,el.LeaveType,el.RequestDate,el.LeaveDays,el.StartDate,el.EndDate,el.id,el.Dept FROM student e, stu_leaves el WHERE e.Dept = el.Dept AND e.Dept = '".$row['Dept']."' AND el.Status = 'Requested' AND e.StuName = el.StuName";
 				$result2 = $conn->query($sql2);
 				if($result2->num_rows > 0)
 					{
@@ -44,7 +44,7 @@ if(isset($_SESSION['adminuser']))
 							{
 							echo "<tr>";
 							echo "<td>";
-							echo $row2['EmpName'];
+							echo $row2['StuName'];
 							echo "</td>";
 							echo "<td>";
 							echo $row2['LeaveType'];
@@ -61,7 +61,7 @@ if(isset($_SESSION['adminuser']))
 							echo "<td>";
 							echo $row2['EndDate'];
 							echo "</td>";
-							echo "<td><a href = 'acceptleave.php?id=".$row2['id']."&empid=".$row2["Id"]."'>Accept</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href = 'rejectleave.php?id=".$row2['id']."&empid=".$row2["Id"]."'>Reject</a></td>";
+							echo "<td><a href = 'acceptleave.php?id=".$row2['id']."&stuid=".$row2["Id"]."'>Accept</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href = 'rejectleave.php?id=".$row2['id']."&stuid=".$row2["Id"]."'>Reject</a></td>";
 							echo "</tr>";
 							$count++;
 							}

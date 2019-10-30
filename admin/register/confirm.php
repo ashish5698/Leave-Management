@@ -2,8 +2,8 @@
 <?php
 session_start();
 include 'connect.php';
-include 'mailer.php';
-?>							
+
+?>
 <link rel="stylesheet" href="style.css">
 <title>::Leave Management::</title>
 <?php
@@ -18,26 +18,18 @@ if(isset($_SESSION['adminuser']))
 		}
 include 'adminnavi.php';
 $errmsg = $sql = "";
-$empname = trim($_POST['empname']);
+$stuname = trim($_POST['stuname']);
 $uname = trim($_POST['uname']);
 $mailid = trim($_POST['mailid']);
 $doj = trim($_POST['year-join'])."-".trim($_POST['month-join'])."-".trim($_POST['date-join']);
-$dob = trim($_POST['year-birth'])."-".trim($_POST['month-birth'])."-".trim($_POST['date-birth']);
 $dob2 = trim($_POST['date-birth'])."-".trim($_POST['month-birth'])."-".trim($_POST['year-birth']);
-$empname = strip_tags($empname);
+$stuname = strip_tags($stuname);
 $uname = strip_tags($uname);
 $mailid = strip_tags($mailid);
 $doj = strip_tags($doj);
-$dob = strip_tags($dob);
 $dob2 = strip_tags($dob2);
-$pass = $dob2;
-$designation = strip_tags(trim($_POST['designation']));
-$emptype = strip_tags(trim($_POST['factype']));
-$empfee = strip_tags(trim($_POST['facfee']));
-$earnleave = 0;
 $sickleave = 0;
-$casualleave = 0;
-if(empty($empname) || empty($uname) || empty($mailid) || empty($doj) || empty($dob))
+if(empty($stuname) || empty($uname) || empty($mailid) || empty($doj) || empty($dob2))
 	{
 		$errmsg.="One or more fields are empty...";
 	}
@@ -46,16 +38,16 @@ if(empty($doj))
 	{
 		$errmsg.="Date Of Joining is empty ! ";
 	}
-	if(empty($dob))
+	if(empty($dob2))
 	{
 		$errmsg.="Date Of Birth is empty ! ";
 	}
 if(strtotime($doj) > time())
 	{
-		$errmsg.=" Date Of Joining cannot be a future date..."; 
+		$errmsg.=" Date Of Joining cannot be a future date...";
 	}
 
-$sql = "SELECT UserName,EmpEmail FROM employees";
+$sql = "SELECT UserName,StuEmail FROM student";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -64,7 +56,7 @@ if ($result->num_rows > 0) {
 				{
 					$errmsg.=" Username ".$uname." already taken...";
 				}
-			if($mailid == $row["EmpEmail"])
+			if($mailid == $row["StuEmail"])
 				{
 					$errmsg.=" Your Entered Email ID is already registered with another user...";
 				}
@@ -82,9 +74,7 @@ if($conn->query($sql2) == TRUE)
 			{
 				while($row2 = $result->fetch_assoc())
 					{
-						$earnleave = $row2['SetEarnLeave'];
 						$sickleave = $row2['SetSickLeave'];
-						$casualleave = $row2['SetCasualLeave'];
 					}
 			}
 	}
@@ -96,32 +86,23 @@ else
 	{
 		echo "<div class = 'reg-form'>";
 		$pw = $uname;
-		$sql = "INSERT INTO employees (UserName,EmpPass,EmpName,Dept,EarnLeave,SickLeave,CasualLeave,EmpEmail,DateOfJoin,Designation,EmpType,EmpFee,DateOfBirth) VALUES "."('".$uname."','".$pw."','".$empname."','".$dept."','".$earnleave."','".$sickleave."','".$casualleave."','".$mailid."','".$doj."','".$designation."','".$emptype."','".$empfee."','".$dob."')";
+		$sql = "INSERT INTO student (UserName,StuName,Dept,SickLeave,StuEmail,DateOfJoin,DateOfBirth) VALUES "."('".$uname."','".$stuname."','".$dept."','".$sickleave."','".$mailid."','".$doj."','".$dob2."')";
 		if ($conn->query($sql) === TRUE) {
 			echo "<center>";
 			echo "<strong> Registration Successful !</strong><br/><br/>";
 			echo "<u>Registration Details :</u><br/>";
 			echo "Username : ".$uname."<br/>";
-			echo "Employee Name : ".$empname."<br/>";
+			echo "Student Name : ".$stuname."<br/>";
 			echo "Department : ".$dept."<br/>";
 			echo "Email id : ".$mailid."<br/>";
 			echo "Date Of Joining : ".$doj."<br/>";
-			echo "Designation : ".$designation."<br/>";
-			echo "Employment Type : ".$emptype." ; ".$empfee."<br/>";
 			echo "Date Of Birth : ".$dob2."<br/>";
-			$msg = "Registration Successful! \n\nUsername : ".$uname."\nEmployee Name : ".$empname."\nPassword : ".$pass."\nDepartment : ".$dept."\nEmail ID : ".$mailid."\nDate Of Joining (yyyy/mm/dd): ".$doj."\n\n\nThanks For Registering with us\n\n\n\nRegards,\nwebadmin, Leave Management System";
-			$to = $mailid;
-			$status = mailer($to,$msg);
-			if($status == true)
-				{
-					echo "<br/>Please check the email ".$mailid." for the confirmation page.<br/>";
-				}
 			echo "</center>";
 			echo "</div>";
 		}
-			else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
-					}
+		else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
 $conn->close();
 	}
 }
