@@ -21,11 +21,11 @@ if(isset($_SESSION['adminuser']))
 	if(!preg_match("/[^a-z_\-0-9]/i", $_POST['name']))
 	{
    $name=$_POST['name'];
-   $sql="SELECT UserName, EmpName, EmpEmail, Dept,EarnLeave,SickLeave,CasualLeave, id FROM employees WHERE  EmpName LIKE '%" . $name . "%' OR UserName LIKE '%" . $name  ."%'";
+   $sql="SELECT UserName, StuName, StuEmail, Dept,SickLeave,id FROM student WHERE  StuName LIKE '%" . $name . "%' OR UserName LIKE '%" . $name  ."%'";
    $result = $conn->query($sql);
 	echo "<table>";
 	echo "<h2>Student Search Results</h2>";
-	echo "<tr><th>Username</th><th>Student Name</th><th>Student email</th><th>Department</th><th>Earn Leaves</th><th>Sick Leaves</th><th>Casual Leaves</th></tr>";
+	echo "<tr><th>Username</th><th>Student Name</th><th>Student email</th><th>Department</th><th>Sick Leaves</th></tr>";
 	if ($result->num_rows > 0) {
 		$sql2 = "SELECT Dept FROM admins WHERE username = '".$_SESSION['adminuser']."'";
 		$result2 = $conn->query($sql2);
@@ -37,8 +37,8 @@ if(isset($_SESSION['adminuser']))
 							{
 							if($row2["Dept"] == $row["Dept"])
 								{
-								echo "<tr><td>" . $row["UserName"]. "</td><td>" . $row["EmpName"]. "</td><td>" . $row["EmpEmail"]."</td><td>".$row["Dept"]."</td><td>".$row["EarnLeave"]."</td><td>".$row["SickLeave"]."</td><td>".$row["CasualLeave"]."</td><br>";
-								echo "<td><a href = 'empdelete.php?id=".$row["id"]."&user=".$row["UserName"]."'>Delete This User</a></td></tr>";
+								echo "<tr><td>" . $row["UserName"]. "</td><td>" . $row["StuName"]. "</td><td>" . $row["StuEmail"]."</td><td>".$row["Dept"]."</td><td>".$row["SickLeave"]."</td><br>";
+								echo "<td><a href = 'studelete.php?id=".$row["id"]."&user=".$row["UserName"]."'>Delete This User</a></td></tr>";
 								$count++;
 								}
 							}
@@ -57,7 +57,7 @@ if(isset($_SESSION['adminuser']))
 	{
 	echo "<div class = 'textview'>";
 	echo  "Please enter a search query ";
-	echo "<a href = 'searchemp.php'>try again?</a>";
+	echo "<a href = 'searchstu.php'>try again?</a>";
 	}
   echo "</div>";
 }
