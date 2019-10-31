@@ -6,17 +6,18 @@ if(isset($_SESSION['user']))
 	   echo "<h1>Leave Management System</h1>";
 	   include 'stunavi.php';
 	   include 'connect.php';
-       echo "<h2>Welcome, " . $_SESSION["user"] ."</h2>";
+	   echo "<h2>Welcome, " . $_SESSION["user"] ."</h2>";
+	   echo "</div>";
 	   if(isset($_GET['msg']))
 		{
 		echo "<div class = 'error'><b><u>".htmlspecialchars($_GET['msg'])."</u></b></div><br/>";
 		}
-		echo "<div class = 'textview'>";
-	  echo "<table>";
+		echo "<center>";
+	  	echo "<table>";
 		$user = $_SESSION['user'];
 		$sql="SELECT * FROM student WHERE  UserName = '".$user."'";
 		$result = $conn->query($sql);
-		echo "<table class='center'>";
+		echo "<table>";
 			if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {
 						echo "<tr><th>Profile Picture : </th><td><img src ='pro-pic/".$user.".jpg' height = 200 width = 200><a href = 'change_pp.php'>Change</a>&nbsp;&nbsp;&nbsp;<a href = 'delete_pp.php'>Delete</a></td></tr>";

@@ -49,7 +49,7 @@ if(isset($_SESSION['adminuser']))
 							$sql4 = "UPDATE stu_leaves SET Status = 'Granted' WHERE id = '".$id."'";
 							if($conn->query($sql4) === TRUE)
 								{
-								$msg = "Your Leave Has Been Granted Successfully ! \nStudent Name : ".$row['StuName']."\nLeave Type : ".$row['LeaveType']."\nNo. Of Leave Days : ".$row['LeaveDays']."\nStarting Date : ".$row['StartDate']."\nEnd date : ".$row['EndDate']."\n\n\nThanks,\nwebadmin, Leave Management System";
+								$msg = "Your Leave Has Been Granted Successfully ! \nStudent Name : ".$row['StuName']."\nNo. Of Leave Days : ".$row['LeaveDays']."\nStarting Date : ".$row['StartDate']."\nEnd date : ".$row['EndDate']."\n\n\nThanks,\nwebadmin, Leave Management System";
 								$status = mailer($email,$msg);
 								if($status === TRUE)
 									{
