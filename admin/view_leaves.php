@@ -26,14 +26,14 @@ if(isset($_SESSION['adminuser']))
 			if($_SESSION['adminuser'] == $row['username'])
 				{
 				
-				$sql2 = "SELECT e.Id,e.Dept,e.StuName,el.StuName,el.LeaveType,el.RequestDate,el.LeaveDays,el.StartDate,el.EndDate,el.id,el.Dept FROM student e, stu_leaves el WHERE e.Dept = el.Dept AND e.Dept = '".$row['Dept']."' AND el.Status = 'Requested' AND e.StuName = el.StuName";
+				$sql2 = "SELECT e.Id,e.Dept,e.StuName,el.StuName,el.LeaveReason,el.RequestDate,el.LeaveDays,el.StartDate,el.EndDate,el.id,el.Dept FROM student e, stu_leaves el WHERE e.Dept = el.Dept AND e.Dept = '".$row['Dept']."' AND el.Status = 'Requested' AND e.StuName = el.StuName";
 				$result2 = $conn->query($sql2);
 				if($result2->num_rows > 0)
 					{
 						echo "<table>";
 						echo "<tr>";
 						echo "<th>Student Name</th>";
-						echo "<th>Leave Type</th>";
+						echo "<th>Leave Reason</th>";
 						echo "<th>Request Date</th>";
 						echo "<th>Leave Days</th>";
 						echo "<th>Starting Date</th>";
@@ -47,7 +47,7 @@ if(isset($_SESSION['adminuser']))
 							echo $row2['StuName'];
 							echo "</td>";
 							echo "<td>";
-							echo $row2['LeaveType'];
+							echo $row2['LeaveReason'];
 							echo "</td>";
 							echo "<td>";
 							echo $row2['RequestDate'];

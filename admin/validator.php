@@ -17,7 +17,7 @@ while($row = $result->fetch_assoc()) {
 			}
 		else
 			{
-			header('location:index.php?err='.urlencode($password.'\n'.$row["password"]));
+			header('location:index.php?err='.urlencode('Username Or Password Incorrect'));
 			}
     }	
 ?>

@@ -18,7 +18,7 @@ if(isset($_SESSION['adminuser']))
 			echo "<table>
 							<tr>
 							<th>Student Name</th>
-							<th>Leave Type</th>
+							<th>Leave Reason</th>
 							<th>Request Date</th>
 							<th>Leave Days</th>
 							<th>Status</th>
@@ -30,7 +30,7 @@ if(isset($_SESSION['adminuser']))
 							<table>
 							<tr>
 							<th>Student Name</th>
-							<th>Leave Type</th>
+							<th>Leave Reason</th>
 							<th>Request Date</th>
 							<th>Leave Days</th>
 							<th>Status</th>
@@ -41,8 +41,8 @@ if(isset($_SESSION['adminuser']))
 			while($row = $result->fetch_assoc())
 				{
 					echo "<tr>
-									<td>".$row['EmpName']."</td>
-									<td>".$row['LeaveType']."</td>
+									<td>".$row['StuName']."</td>
+									<td>".$row['LeaveReason']."</td>
 									<td>".$row['RequestDate']."</td>
 									<td>".$row['LeaveDays']."</td>
 									<td>".$row['Status']."</td>
@@ -51,8 +51,8 @@ if(isset($_SESSION['adminuser']))
 									<td>".$row['Dept']."</td>
 									</tr>";
 					$pdf_content .= "<tr>
-									<td>".$row['EmpName']."</td>
-									<td>".$row['LeaveType']."</td>
+									<td>".$row['StuName']."</td>
+									<td>".$row['LeaveReason']."</td>
 									<td>".$row['RequestDate']."</td>
 									<td>".$row['LeaveDays']."</td>
 									<td>".$row['Status']."</td>

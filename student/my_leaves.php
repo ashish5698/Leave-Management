@@ -24,7 +24,7 @@ if(isset($_SESSION['user']))
 				{
 				echo "<table>";
 				echo "<tr><th>Name</th>";
-				echo "<th>Type Of Leave</th>";
+				echo "<th>Leave Reason</th>";
 				echo "<th>Request Date</th>";
 				echo "<th>Days Of Leave</th>";
 				echo "<th>Start Date</th>";
@@ -34,13 +34,13 @@ if(isset($_SESSION['user']))
 				while($row2 = $result2->fetch_assoc())
 					{
 					echo "<tr><td>".$row2["StuName"]."</td>";
-					echo "<td>".$row2["LeaveType"]."</td>";
+					echo "<td>".$row2["LeaveReason"]."</td>";
 					echo "<td>".$row2["RequestDate"]."</td>";
 					echo "<td>".$row2["LeaveDays"]."</td>";
 					echo "<td>".$row2["StartDate"]."</td>";
 					echo "<td>".$row2["EndDate"]."</td>";
 					echo "<td>".$row2["Status"]."</td>";
-					echo "<td><a href = 'leaves/".$_SESSION['user'].$row2["StartDate"].$row2["LeaveType"].$row2["EndDate"].".pdf'>Download</a></td>";
+					echo "<td><a href = 'leaves/".$_SESSION['user'].$row2["StartDate"].'to'.$row2["EndDate"].".pdf'>Download</a></td>";
 					}
 				echo "</table>";
 				echo "</center>";

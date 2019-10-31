@@ -23,10 +23,9 @@ table {
     font-size:18px;
     background:#eaebec;
     border:#ccc 1px solid;
-
+    width: 100%;
     border-radius:3px;
     border-collapse:collapse; border-spacing: 0;
-
     box-shadow: 0 1px 2px #d1d1d1;
 }
 table th {
@@ -74,6 +73,5 @@ table tr:hover td {
 
 }
 table th, table td {
-    width: 160px;
-
+    width: 300px;
 }
